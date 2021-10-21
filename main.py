@@ -65,13 +65,13 @@ def spin():
 def main():
     while 1:
         if online():
-            quesionandanswer = getqna(questionlink())
+            questionandanswer = getqna(questionlink())
             sw = ''
             points = 0
-            for i in range(len(quesionandanswer[1])):
+            for i in range(len(questionandanswer[1])):
                 sw += '_'
-            print('ПОЛЕ ЧУДЕС\nВопрос : ' + quesionandanswer[0])
-            while sw != quesionandanswer[1]:
+            print('ПОЛЕ ЧУДЕС\nВопрос : ' + questionandanswer[0])
+            while sw != questionandanswer[1]:
                 print(sw)
                 sector = spin()
                 zap = False
@@ -105,11 +105,11 @@ def main():
                                     print("Вы ввели не число. Повторите ввод")
                     pos = []
                     start = 0
-                    while quesionandanswer[1].find(quesionandanswer[1][int(ln)-1], start) != -1:
-                        pos.append(quesionandanswer[1].find(quesionandanswer[1][int(ln)-1], start))
-                        start = quesionandanswer[1].find(quesionandanswer[1][int(ln)-1], start) + 1
+                    while questionandanswer[1].find(questionandanswer[1][int(ln)-1], start) != -1:
+                        pos.append(questionandanswer[1].find(questionandanswer[1][int(ln)-1], start))
+                        start = questionandanswer[1].find(questionandanswer[1][int(ln)-1], start) + 1
                     for p in pos:
-                        sw = sw[:p] + quesionandanswer[1][p] + sw[p + 1:]
+                        sw = sw[:p] + questionandanswer[1][p] + sw[p + 1:]
                     print(sw)
                 elif sector == 'x2':
                     print('Ваши очки удвоены.')
@@ -133,20 +133,20 @@ def main():
                     print('Эта буква уже открыта, попробуйте другую')
                     letter = input('Буква или слово: ')
                 if len(letter) > 1:
-                    if letter != quesionandanswer[1]:
+                    if letter != questionandanswer[1]:
                         print('Неверно!')
                     else:
                         if sector != 'x2' and sector != '+' and sector != 'Б' and sector != 'x2':
                             points += int(sector)
-                        sw = quesionandanswer[1]
+                        sw = questionandanswer[1]
                 else:
                     pos = []
                     start = 0
-                    while quesionandanswer[1].find(letter, start) != -1:
-                        pos.append(quesionandanswer[1].find(letter, start))
-                        start = quesionandanswer[1].find(letter, start) + 1
+                    while questionandanswer[1].find(letter, start) != -1:
+                        pos.append(questionandanswer[1].find(letter, start))
+                        start = questionandanswer[1].find(letter, start) + 1
                     for p in pos:
-                        sw = sw[:p] + quesionandanswer[1][p] + sw[p + 1:]
+                        sw = sw[:p] + questionandanswer[1][p] + sw[p + 1:]
                     if len(pos) == 0:
                         print('Неверно!')
                     elif len(pos) == 1:
@@ -159,7 +159,7 @@ def main():
                             points += int(sector) * len(pos)
                             print('За ' + str(len(pos)) + ' отгаданные буквы полученные вами очки умножаются на '
                                   + str(len(pos)))
-            input('Вы победили! Это было слово ' + quesionandanswer[1] + '.\n'
+            input('Вы победили! Это было слово ' + questionandanswer[1] + '.\n'
                   + 'Вы набрали ' + str(points) + ' очков.\nЧтобы начать заново нажмите Enter')
         else:
             print('Ошибка подключения к интернету.')
