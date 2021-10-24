@@ -132,6 +132,11 @@ def main():
                 while sw.find(letter) != -1:
                     print('Эта буква уже открыта, попробуйте другую')
                     letter = input('Буква или слово: ')
+                    for i in range(len(letter)):
+                    if ord(letter[i]) >= 1072:
+                        letter = letter[:i] + chr(ord(letter[i]) - 32) + letter[i + 1:]
+                    if not 1103 > ord(letter[i]) < 1040:
+                            zap = False
                 if len(letter) > 1:
                     if letter != questionandanswer[1]:
                         print('Неверно!')
